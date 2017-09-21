@@ -1,0 +1,889 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>reveal.js</title>
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/zell-theme.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/tomorrow-night.css">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link')
+		link.rel = 'stylesheet'
+		link.type = 'text/css'
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css'
+		document.getElementsByTagName('head')[0].appendChild(link)
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section class="">
+				<section class="u-text-center">
+					<h1>Building Scalable Components</h1>
+				</section>
+
+				<section>
+					<h2>Questions asked: </h2>
+					<ul>
+						<li class="fragment">Is my CSS good enough?</li>
+						<li class="fragment">Am I doing the right things?</li>
+						<li class="fragment">Am I using the best practices?</li>
+						<li class="fragment">Is my CSS clean and maintainable?</li>
+						<li class="fragment">Is it DRY?</li>
+						<li class="fragment">Is it scalable?</li>
+						<li class="fragment">What can I improve on? <span class="fragment">And how?</span></li>
+					</ul>
+				</section>
+
+ 				<section data-background="images/google2.png"></section>
+
+				<section>
+					<h2>More questions asked:</h2>
+					<ul>
+						<li class="fragment">What I framework should I use?</li>
+						<li class="fragment">Should I use frameworks?</li>
+						<li class="fragment">Should I use methods like OOCSS, BEM, SMACSS, Atomic Design?</li>
+						<li class="fragment">Which should I use?</li>
+						<li class="fragment">&hellip;</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>How do you...</h2>
+					<ul>
+						<li class="fragment">Maintainable?</li>
+						<li class="fragment">Scalable?</li>
+						<li class="fragment">Clean?</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Hello, I&rsquo;m Zell</h1>
+				</section>
+
+				<section data-background="images/zell.jpg"></section>
+
+				<section class="u-text-center">
+					<div style="font-size: 3em;">🇸🇬</div>
+					<h2>Designer/developer</h2>
+				</section>
+
+				<section>
+					<h2>When I'm not desiging/coding&hellip;</h2>
+					<ul>
+						<li class="fragment">I teach FED. I help over 30,000 readers/month</li>
+						<li class="fragment">Through my <a href="https://zellwk.com">blog</a> and <a href="https://zellwk.com/products">courses</a></li>
+						<li class="fragment"><a href="https://zellwk.com">zellwk.com</a></li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Back to the topic</h1>
+				</section>
+
+				<section>
+					<h2>How do you...</h2>
+					<ul>
+						<li class="fragment">Maintainable?</li>
+						<li class="fragment">Scalable?</li>
+						<li class="fragment">Clean?</li>
+					</ul>
+				</section>
+
+				<section>
+					<a href="https://zellwk.com/blog" target="_blank"><img src="images/zell-blog.png" alt=""></a>
+				</section>
+
+				<section data-background-video="images/proportional-scaling2.mp4"> </section>
+
+				<section class="u-text-center">
+					<h2>Let's call that <em>proportional</em> scaling</h2>
+				</section>
+
+				<section data-background-video="images/responsive-scaling.mp4">
+				</section>
+
+				<section class="u-text-center">
+					<h2>Let's call that <em>responsive</em> scaling</h2>
+				</section>
+
+				<section data-transition="fade">
+					<img src="images/zell-article-button.png" alt="">
+				</section>
+
+				<section data-transition="fade">
+					<img src="images/zell-form-button.png" alt="">
+				</section>
+
+				<section data-transition="fade">
+					<img src="images/zell-home-button.png" alt="" style="transform: scale(0.8, 0.8) translateY(-1.75em); ">
+				</section>
+
+				<section data-transition="fade">
+					<img src="images/zell-small-button.png" alt="">
+				</section>
+
+				<section data-background="images/lego.jpg"></section>
+
+				<section class="u-text-center">
+					<h2>Let's call that <em>modular</em> scaling</h2>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2 class="fragment">1. Proportional Scaling</h2>
+					<h2 class="fragment">2. Responsive Scaling</h2>
+					<h2 class="fragment">3. Modular Scaling</h2>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Proportional Scaling</h1>
+				</section>
+
+				<section>
+					<video src="images/proportional-scaling-intro2.mp4" controls></video>
+				</section>
+
+				<section>
+					<h2>Relative units</h2>
+					<ul>
+						<li class="fragment"><code>em</code></li>
+						<li class="fragment"><code>ch</code></li>
+						<li class="fragment"><code>%</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<pre class="scss"><code>button {
+  font-size: 1em;
+  padding: 0.5em 0.75em;
+  /* Other properties */
+}</code></pre>
+				</section>
+
+				<section>
+					<button class="button" data-size="1">A button</button>
+					<button class="button" data-size="2">A button</button>
+					<button class="button" data-size="3">A button</button>
+					<button class="button" data-size="4">A button</button>
+					<button class="button" data-size="5">A button</button>
+					<button class="button" data-size="6">A button</button>
+					<button class="button" data-size="7">A button</button>
+					<button class="button" data-size="8">A button</button>
+					<button class="button" data-size="9">A button</button>
+					<button class="button" data-size="10">A button</button>
+					<button class="button" data-size="11">A button</button>
+					<button class="button" data-size="12">A button</button>
+					<button class="button" data-size="13">A button</button>
+					<button class="button" data-size="14">A button</button>
+				</section>
+
+				<section class="u-text-center">
+					<p><button class="button" data-size="3">A button</button></p>
+					<p><button class="button" data-size="6">A button</button></p>
+					<p><button class="button" data-size="9">A button</button></p>
+				</section>
+
+				<section>
+					<pre class="scss"><code>/* Group common properties together */
+.button {
+	display: inline-block;
+  padding: 0.5em 0.75em;
+  font-size: 1em;
+}
+
+.button-small {
+  font-size: 0.8em;
+}
+
+.button-large {
+  font-size: 2em;
+}</code></pre>
+				</section>
+
+				<section>
+					<pre><code data-no-escape><button class="button button-large">A Button</button></code></pre>
+				</section>
+
+				<section>
+					<h2>Using Sass mixins</h2>
+					<pre><code data-no-escape><button class="button-large">A large button</button></code></pre>
+					<pre class="scss"><code>@mixin button {
+	display: inline-block;
+  padding: 0.5em 0.75em;
+  /* Other common properties */
+}
+
+.button-large {
+  @include button;
+  font-size: 2em;
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>Components scale according to:</h2>
+					<ul>
+						<li class="fragment">font-size</li>
+						<li class="fragment">viewport</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Viewport units</h2>
+					<ul class="fragment">
+						<li><code>vw</code></li>
+						<li><code>vh</code></li>
+						<li><code>vmin</code></li>
+						<li><code>vmax</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<pre class="scss"><code>.quarter-screen-rect {
+  width: 50vw;
+  height: 50vh;
+}</code></pre>
+				</section>
+
+				<section class="u-text-center">
+					<h2><a href="demo/qs.html" target="_blank">Quarter screen rectangle</a></h2>
+				</section>
+
+				<section class="u-text-center">
+					<h2><a href="demo/rt.html" target="_blank">Fluid typography</a></h2>
+				</section>
+
+				<section>
+				<h3>Fluid Typography with <code>vw</code></h3>
+					<pre class="scss"><code>html {
+  font-size: calc(16px + 0.5vw);
+}
+
+h2 {
+  font-size: 3em;
+}</code></pre>
+					<p class="small fragment">For more, read <a href="https://www.smashingmagazine.com/2016/05/fluid-typography/">fluid typography</a> by Mike Riethmuller</p>
+				</section>
+
+				<section>
+					<h2>Proportional Scaling:</h2>
+					<ul>
+						<li class="fragment">Scale to what property?</li>
+						<li class="fragment">Use relative units like <code>em</code> and <code>vw</code></li>
+						<li class="fragment">Refrain from <code>px</code></li>
+					</ul>
+				</section>
+
+				<section class="lego-animate">
+					<div class="grid jsRearrange">
+						<div class="fragment" data-content="Input"> <input class="input"> </div>
+						<div class="fragment" data-content="Label"> <label class="label">Label text</label> </div>
+						<div class="fragment" data-content="Button"> <button class="button">a button</button> </div>
+						<div class="fragment" data-content="Title text"> <h2 class="title">Grab the freebie!</h2> </div>
+					</div>
+				</section>
+
+			</section>
+
+			<!-- Start modular components (Lego) -->
+			<section>
+				<section class="u-text-center">
+					<h1>Lego blocks</span></h1>
+				</section>
+
+				<section data-background="images/lego.jpg"></section>
+
+				<section data-transition="fade" class="u-text-center">
+					<img class="no-borders" src="images/ms-no-external-spaces-alone.png" alt="">
+				</section>
+
+				<section data-transition="fade" class="u-text-center">
+					<img class="no-borders" src="images/ms-no-external-spaces.png" alt="">
+				</section>
+
+				<section data-transition="fade">
+					<div class="borders" style="border: 6px solid black; padding: 0.75em;">
+						<h3>Component title</h3>
+						<p>The quick brown fox jumps over the lazy dog. </p>
+					</div>
+				</section>
+
+				<section data-transition="fade">
+					<img class="no-borders" src="images/ms-comp.jpg">
+				</section>
+
+				<section data-transition="fade">
+					<img class="no-borders" src="images/ms-comp2.jpg">
+				</section>
+
+				<section data-transition="fade">
+					<h3>Removing the bottom margin</h3>
+					<pre><code>.component p:last-child { margin-bottom: 0 } </code></pre>
+				</section>
+
+				<section data-transition="fade">
+					<h3>Removing the bottom margin for everything</h3>
+					<pre><code>.module p:last-child,
+.module ul:last-child,
+.module ol:last-child,
+.module dl:last-child {
+  /* losing battle */
+  margin-bottom: 0;
+}</code></pre>
+				<p class="small">From <a href="https://css-tricks.com/spacing-the-bottom-of-modules/">this article</a> on CSS-Tricks</p>
+				</section>
+
+				<section class="u-text-center">
+					<h2>The adjacent sibling selector (<code>+</code>)</h2>
+				</section>
+
+				<section>
+					<div class="l-half">
+						<div>
+							<style scoped contenteditable>.reveal .block {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	color: blue;
+}</style>
+						</div>
+						<div>
+							<div class="demo">
+								<h4 class="small">Single component</h4>
+								<div class="container">
+									<div class="block">Component</div>
+								</div>
+							</div>
+							<div class="demo">
+								<h4 class="small">Multiple components</h4>
+								<div class="container">
+									<div class="block">Component</div>
+									<div class="block">Component</div>
+									<div class="block">Component</div>
+									<div class="block">Component</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Lobotomized owl selector</h3>
+					<pre class="scss"><code>* + * {
+  margin-top: 1rem;
+}
+
+.component > * + * {
+	margin-top: 1rem;
+}</code></pre>
+					<p class="small">Read <a href="https://alistapart.com/article/axiomatic-css-and-lobotomized-owls">lobotomized owl</a> by Heydon Pickering</p>
+				</section>
+
+				<section class="u-text-center">
+					<h1>Managing internal whitespace</h1>
+				</section>
+
+				<section>
+					<pre><code>.button {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	/* Other properties */
+}</code></pre>
+				</section>
+
+				<section class="u-text-center">
+					<video controls src="images/margin-expand2.mp4"></video>
+				</section>
+
+				<section>
+					<pre><code>.button {
+	font-size: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	/* Other properties */
+}</code></pre>
+					<pre><code>.button-large {
+	font-size: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	/* Other properties */
+}</code></pre>
+				</section>
+
+				<section class="u-text-center">
+					<h1>Rem to the rescue!</h1>
+				</section>
+
+				<section>
+					<pre><code>.button-large {
+	font-size: 2em;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	/* Other properties */
+}</code></pre>
+				</section>
+
+				<section class="u-text-center">
+					<video controls src="images/margin-expand-rem2.mp4"></video>
+				</section>
+
+				<section class="u-text-center">
+					<h2 class="fragment">Em === local variable</h2>
+					<h2 class="fragment">Rem === global variable</h2>
+				</section>
+
+				<section class="u-text-center" data-transition="fade">
+					<h2 class="fragment" style="color: #00b011">Local variable === good <span style="opacity: 0;">?</span></h2>
+					<h2 class="fragment" style="color: #ff2c2d">Global variable === bad <span style="opacity: 0;">?</span></h2>
+				</section>
+
+				<section class="u-text-center" data-transition="fade">
+					<h2 style="color: #00b011">Local variable === good <span class="fragment">?</span></h2>
+					<h2 style="color: #ff2c2d">Global variable === bad <span class="fragment">?</span></h2>
+				</section>
+
+				<section>
+					<h2>Lego blocks</h2>
+					<ul>
+						<li class="fragment">Components should not disturb surrounding whitespace</li>
+						<li class="fragment">Components should control internal whitespace</li>
+						<li class="fragment">Use (<code>+</code>)</li>
+						<li class="fragment">Use local and global variables (<code>em</code> and <code>rem</code>)</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Responsive Scaling</h1>
+				</section>
+
+				<section data-background-video="images/responsive-scaling.mp4"></section>
+
+				<section class="u-text-center">
+					<h1>Media queries</h1>
+				</section>
+
+				<section>
+					<h2>Media queries</h2>
+					<ul>
+						<li class="fragment"><code>min-width</code> queries</li>
+						<li class="fragment"><code>max-width</code> queries</li>
+					</ul>
+				</section>
+
+				<section class="u-text-center">
+					<img class="no-borders" src="images/resp-comp.png" alt="">
+				</section>
+
+				<section>
+					<h3><code>min-width</code> media queries</h3>
+					<pre><code>// Note: Always write media queries in `em`.
+.component {
+  @media (min-width: 37.5em) {
+    font-size: 2em;
+  }
+}</code></pre>
+				</section>
+
+				<section>
+					<h3><code>max-width</code> media queries</h3>
+					<pre><code>.component {
+  font-size: 2em;
+  @media (max-width: 37.5em) {
+    font-size: 1em;
+  }
+}</code></pre>
+				<!-- Fragment with box -->
+				<div class="fragment box" style="width: 7em; height: 0.7em; top: 5.525em; left: 1.5em"></div>
+				</section>
+
+				<section>
+					<h2>Combining <code>min-width</code> and <code>max-width</code></h2>
+				</section>
+
+				<section data-transition="fade" class="u-text-center">
+					<h2>Small viewport</h2>
+					<img style="max-width: 50%;" src="images/combine-small.png" alt="">
+				</section>
+
+				<section data-transition="fade" class="u-text-center">
+					<h2>Medium viewport</h2>
+					<img style="max-width: 50%;" src="images/combine-medium.png" alt="">
+				</section>
+
+				<section data-transition="fade" class="u-text-center">
+					<h2>Large viewport</h2>
+					<img style="max-width: 50%;" src="images/combine-large.png" alt="">
+				</section>
+
+				<section class="u-text-center">
+					<h2><a href="demo/resp-combine.html" target="_blank">Media query demo</a></h2>
+				</section>
+
+				<section>
+					<h2>Responsive Scaling:</h2>
+					<ul>
+						<li class="fragment">media queries</li>
+						<li class="fragment">favor <code>min-width</code> over <code>max-width</code></li>
+						<li class="fragment">use both when you need to!</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Modular Scaling</h1>
+				</section>
+
+				<section data-background="images/lego.jpg"></section>
+
+				<section class="u-text-center">
+					<h1>Morphable components</h1>
+				</section>
+
+				<section class="u-text-center">
+					<img class="no-borders" style="position: relative; top: -0.5em;" src="images/button-pink.png" alt="">
+					<img class="no-borders" style="position: relative; top: 0.5em;" src="images/button-green.png" alt="">
+				</section>
+
+				<section data-background-video="images/foundersmantra.m4v"></section>
+
+				<section>
+					<div class="l-half">
+						<div>
+							<h3>Grid view</h3>
+							<img class="no-borders" src="images/fm-small.png" alt="">
+						</div>
+						<div>
+							<h3>Single view</h3>
+							<img class="no-borders" src="images/fm-large.png" alt="">
+						</div>
+					</div>
+				</section>
+
+				<section data-transition="fade">
+					<div class="l-half">
+						<div>
+							<h3>Grid view</h3>
+							<img class="no-borders" src="images/fm-small.png" alt="">
+						</div>
+						<div>
+							<h3>Single view</h3>
+							<img class="no-borders" src="images/fm-large.png" alt="">
+						</div>
+					</div>
+
+					<div class="fragment">
+						<div class="box" style="top: 2.7em; left: 0.2em; width: 12em; height: 6em;"></div>
+						<div class="box" style="top: 2.7em; right: 0.5em; width: 9.1em; height: 4em;"></div>
+						<div class="u-absolute" style="color: red; top: 8em; left: 13.8em;">Quote</div>
+					</div>
+				</section>
+
+				<section data-transition="fade">
+					<div class="l-half">
+						<div>
+							<h3>Grid view</h3>
+							<img class="no-borders" src="images/fm-small.png" alt="">
+						</div>
+						<div>
+							<h3>Single view</h3>
+							<img class="no-borders" src="images/fm-large.png" alt="">
+						</div>
+					</div>
+
+					<div class="fragment">
+						<div class="box" style="top: 10.2em; left: 0.2em; width: 3.9em; height: 1.1em;"></div>
+						<div class="box" style="top: 3.7em; right: 10.7em; width: 1.9em; height: 1.4em;"></div>
+						<div class="u-absolute" style="color: red; top: 8em; left: 13.8em;">Author</div>
+					</div>
+				</section>
+
+				<section data-transition="fade">
+					<div class="l-half">
+						<div>
+							<h3>Grid view</h3>
+							<img class="no-borders" src="images/fm-small.png" alt="">
+						</div>
+						<div>
+							<h3>Single view</h3>
+							<img class="no-borders" src="images/fm-large.png" alt="">
+						</div>
+					</div>
+
+					<div class="fragment">
+						<div class="box" style="top: 10.2em; left: 9.2em; width: 3.2em; height: 1.1em;"></div>
+						<div class="u-absolute" style="color: red; top: 8em; left: 13.8em;">Date</div>
+					</div>
+				</section>
+
+				<section>
+					<pre class="html "><code data-no-escape><div class="quote">
+	<div class="message">Tomorrow, is the fist blank page of a 365 page book. Write a good one </div>
+	<div class="author">Brad Paisley</div>
+	<div class="date">Dec 31 2016</div>
+</div></code></pre>
+				</section>
+
+				<section>
+					<pre><code data-no-escape><!-- Single view -->
+<div class="single-view">
+  <div class="quote active"> &hellip; </div>
+</div></code></pre>
+					<pre><code data-no-escape><!-- Grid view -->
+<div class="grid-view">
+  <div class="quote"> &hellip; </div>
+</div></code></pre>
+				</section>
+
+				<section>
+					<pre><code>.quote {
+  /* Shared styles */
+} </code></pre>
+					<pre><code>.single-view .quote {
+  /* Single styles */
+}
+.single-view .quote .date {
+  display: none;
+} </code></pre>
+					<pre><code>.grid-view .quote {
+  /* Grid styles */
+}</code></pre>
+				</section>
+
+				<section>
+					<pre><code data-no-escape><!-- Single view -->
+<div>
+  <div class="quote quote--single active"> &hellip; </div>
+</div></code></pre>
+					<pre><code data-no-escape><!-- Grid view -->
+<div>
+  <div class="quote quote--grid"> &hellip; </div>
+</div></code></pre>
+				</section>
+
+				<section>
+					<pre><code>.quote {
+  /* shared styles */
+}</code></pre>
+
+					<pre><code>.quote--single {
+  /* single styles */
+}
+
+.quote--single .quote__date {
+  display: none;
+}</code></pre>
+
+					<pre class="css"><code>.quote--grid {
+  /* grid here */
+}</code></pre>
+				</section>
+
+				<section class="u-text-center">
+					<h2><a href="demo/morph-1.html" target="blank">Founder Mantras demo</a></h2>
+				</section>
+
+				<section class="u-text-center">
+					<h1>Morphable components may not be obvious</h1>
+				</section>
+
+				<section data-background="images/gog.png"></section>
+				<section data-background="images/gog-2.jpg"></section>
+
+				<section>
+					<h2>All three of them have:</h2>
+					<ul>
+						<li class="fragment">1 image</li>
+						<li class="fragment">Title</li>
+						<li class="fragment">Background color</li>
+						<li class="fragment">Hover effect</li>
+						<li class="fragment">Platform indicator</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Two of them have:</h2>
+					<ul>
+						<li class="fragment">Price tag</li>
+						<li class="fragment">Discount tag</li>
+						<li class="fragment">Platform indicator</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Their differences:</h2>
+					<ul>
+						<li class="fragment">Layout</li>
+						<li class="fragment">Comments</li>
+						<li class="fragment">Description</li>
+						<li class="fragment">Genre</li>
+						<li class="fragment">List Counter</li>
+					</ul>
+				</section>
+
+				<section class="u-text-center">
+					<h1>Can you figure it out?</h1>
+				</section>
+
+				<section>
+					<h2>Morphable blocks</h2>
+					<ul>
+						<li class="fragment">Find similarities and differences between views</li>
+						<li class="fragment">Craft your best-fit HTML</li>
+						<li class="fragment">Modify looks with CSS</li>
+						<li class="fragment">Minimize the number of modifiers</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section class="u-text-center">
+					<h1>Additional tips</h1>
+				</section>
+
+				<section>
+					<h2>Additional tips</h2>
+					<ul>
+						<li class="fragment">Naming components</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre><code>.quote {
+  /* shared styles */
+}</code></pre>
+
+					<pre><code>.quote--single {
+  /* single styles */
+}
+
+.quote--single .quote__date {
+  display: none;
+}</code></pre>
+
+					<pre><code>.quote--grid {
+  /* grid here */
+}</code></pre>
+					<div class="fragment fadeout">
+						<div class="box u-absolute" style="top: 5.7em; left: 0.4em; width: 7em; height: 1.2em;"></div>
+						<div class="u-absolute" style="color: red; top: 7.8em; left: 10.6em; font-size: 0.75em;">BEM Modifier</div>
+					</div>
+
+					<div class="fragment">
+						<div class="box u-absolute" style="top: 9.4em; left: 6.4em; width: 6em; height: 1.2em;"></div>
+						<div class="u-absolute" style="color: red; top: 12.75em; left: 17.4em; font-size: 0.75em;">BEM Element</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Additional tips</h2>
+					<ul>
+						<li>Naming components</li>
+						<li class="fragment">Namespacing</li>
+					</ul>
+				</section>
+
+				<section>
+					<ul>
+						<li class="fragment">Elements: <code>e-</code> </li>
+						<li class="fragment">Components: <code>c-</code> </li>
+					</ul>
+				</section>
+
+				<section>
+					<ul>
+						<li class="fragment">Layouts: <code>l-</code> <span class="fragment">(<code>.l-article</code>)</span></li>
+						<li class="fragment">State: <code>is-</code>, <code>has-</code> <span class="fragment">(<code>.is-active</code>)</span></li>
+						<li class="fragment">JavaScript: <code>js</code> <span class="fragment">(<code>.jsModalToggle</code>)</span></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Additional tips</h2>
+					<ul>
+						<li>Naming components</li>
+						<li>Namespacing</li>
+						<li class="fragment">Manage specificity</li>
+					</ul>
+				</section>
+
+				<section class="u-text-center" data-transition="none">
+					<img class="no-borders" src="images/specificity-calc.png" alt="">
+				</section>
+
+				<section class="u-text-center" data-transition="none">
+					<img class="no-borders" src="images/specificity-tags.jpg" alt="">
+				</section>
+
+				<section class="u-text-center" data-transition="none">
+					<img class="no-borders" src="images/specificity-components.jpg" alt="">
+				</section>
+
+				<section class="u-text-center" data-transition="none">
+					<img class="no-borders" src="images/specificity-id.jpg" alt="">
+				</section>
+
+				<section class="u-text-center" data-transition="none">
+					<img class="no-borders" src="images/specificity-components-2.jpg" alt="">
+				</section>
+			</section>
+
+			<section class="u-text-center">
+				<section>
+					<h1>Closing</h1>
+				</section>
+
+				<section>
+					<h1>Thank you!</h1>
+				</section>
+
+				<section class="u-text-center">
+					<p><a href="https://github.com/zellwk/scalable-components">Github.com/zellwk/scalable-components</a></p>
+				</section>
+
+				<section>
+					<p>Blog: <a href="https://zellwk.com">https://zellwk.com</a></p>
+					<p>Twitter: <a href="https://twitter.com/zellwk">@zellwk</a></p>
+				</section>
+
+				<section>
+					<h1>Questions?</h1>
+				</section>
+			</section>
+
+		</div>
+	</div>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="js/gsap/TweenMax.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+    	dependencies: [
+    	{ src: 'plugin/markdown/marked.js' },
+    	{ src: 'plugin/markdown/markdown.js' },
+    	{ src: 'plugin/notes/notes.js', async: true },
+    	{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad() } }
+    	]
+    })
+  </script>
+</body>
+
+</html>

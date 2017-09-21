@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo – Founders Mantra</title>
+</head>
+<body>
+
+  <style>
+    html {
+      color: white;
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #fd9b47;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+    }
+
+    .button {
+      position: absolute;
+      top: 3em;
+      display: inline-block;
+      padding: 0.5em 0.75em;
+      font-size: 1.4em;
+      background-color: #3badff;
+      color: white;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 1px solid #2A80BE;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .button:hover {
+      background-color: #2A80BE;
+    }
+
+    /* Quote Component */
+    .quote__message {
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .quote__date {
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Single view modifiers */
+    .quote--single {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    .quote--single .quote__message {
+      grid-column: 2;
+      max-width: 10em;
+      font-size: 4em;
+     }
+
+    .quote--single .quote__author {
+      position: relative;
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 1.2em;
+      letter-spacing: 0.05em
+    }
+
+    .quote--single .quote__author::before {
+      display: block;
+      position: absolute;
+      top: -1.5rem;
+      right: 7rem;
+      font-size: 0.7em;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: right;
+      letter-spacing: 0.15em;
+      content: "Shared by";
+    }
+
+    .quote--single .quote__author::after {
+      content: "––––––";
+      margin-left: 1em;
+      margin-right: 1.5em;
+      letter-spacing: 0;
+    }
+
+    .quote--single .quote__date {
+      display: none;
+    }
+
+    /* Grid view modifiers */
+    .quote--grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 3em;
+      max-width: calc(100% / 3);
+      margin: auto;
+    }
+
+    .quote--grid .quote__message {
+      grid-column: span 2;
+      font-size: 2.5em;
+    }
+
+    .quote--grid .quote__author {
+      grid-column: 1;
+    }
+
+    .quote--grid .quote__author::before {
+      content: "––";
+      margin-right: 0.5em;
+    }
+
+    .quote--grid .quote__date {
+      grid-column: 2;
+      text-align: right;
+    }
+  </style>
+
+  <button class="button jsToggle">Toggle view</button>
+
+  <div class="grid">
+    <div class="quote quote--single jsQuote">
+      <div class="quote__message">Tomorrow, is the fist blank page of a 365 page book. Write a good one </div>
+      <div class="quote__author">Brad Paisley</div>
+      <div class="quote__date">Dec 31 2016</div>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.jsToggle')
+    const quote = document.querySelector('.jsQuote')
+
+    toggle.addEventListener('click', _ => {
+      const classList = quote.classList
+
+      if (classList.contains('quote--single')) {
+        classList.remove('quote--single')
+        classList.add('quote--grid')
+      } else {
+        classList.remove('quote--grid')
+        classList.add('quote--single')
+      }
+    })
+  </script>
+
+</body>
+</html>

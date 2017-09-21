@@ -1,0 +1,298 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+
+// ---------------------------------------------
+
+$colors: (carnation: #FF4F5C, turquoise: #4EDEB9, bleu: #3387F1, nile: #1E3A4B);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #444;
+$headingColor: #282828;
+
+$mainFontSize: 36px;
+$mainFont: "SF Pro Text", serif;
+$headingFont: "SF Pro Display", serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 700;
+
+$linkColor: #1F4E5C;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: ms(3);
+$heading2Size: ms(1);
+$heading3Size: ms(0);
+
+// Theme template ------------------------------
+@import "../template/theme";
+
+.reveal .small {
+  font-size: ms(-1);
+}
+
+.reveal .l-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  grid-gap: 1em;
+
+  img {
+    max-width: 100%;
+    max-height: inherit;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+// Overrides
+// ---------
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal section {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal {
+  h2, h3 {
+    font-weight: 600;
+  }
+
+  ul, ol {
+    margin-left: 0;
+    padding-left: 2em;
+
+    + ul, + ol {
+      margin-top: 0.25em;
+    }
+  }
+
+  li + li {
+    margin-top: 0.25em;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.reveal code {
+  display: inline-block;
+  padding: 0 0.5em;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 0.8em;
+  font-family: 'Hack';
+}
+
+// Code block default style
+.reveal pre {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 0.66em;
+  white-space: pre-wrap;
+  tab-size: 2;
+  background-color: #2d2d2d;
+
+  code {
+    max-height: initial;
+    padding: 0.75em 1em;
+    border: 0;
+    background-color: #2d2d2d;
+    font-size: 1em;
+    line-height: 1.4;
+  }
+}
+
+.reveal section img {
+  border: 2px solid black;
+}
+
+.reveal section img.no-borders {
+  border: 0;
+  box-shadow: none;
+}
+
+.u-relative {
+  position: relative !important;
+}
+
+.u-absolute {
+  position: absolute !important;
+}
+
+img.u-absolute {
+  position: absolute !important;
+  max-height: initial !important;
+  margin: auto;
+}
+
+.u-text-center {
+  text-align: center !important;
+}
+
+// ======================================
+// # For the slides
+// ======================================
+.button {
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  border: 0;
+  background-color: #1ce;
+  color: #fff;
+  font-size: 1em;
+}
+
+* + .button {
+  margin-top: 0.5em;
+}
+
+@for $i from 1 through 14 {
+  .button[data-size="#{$i}"] {
+    font-size: 0.5em * 0.25 * $i;
+  }
+}
+
+.reveal .box {
+  position: absolute;
+  border: 4px solid red;
+}
+
+.lego-animate.lego-animate {
+  font-family: 'FreightSans Pro';
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+  }
+
+  > .grid > *::before {
+    display: block;
+    content: attr(data-content);
+    font-weight: bold;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .input {
+    font-size: 0.75em;
+    padding: 0.5em 0.75em;
+    width: 13em;
+    border: 1px solid #ccc;
+  }
+
+  .button {
+    font-size: 0.75em;
+    padding: 0.5em 0.75em 0.6em;
+    font-feature-settings: "smcp" 1;
+    font-weight: 500;
+    border: 1px solid #1ce;
+  }
+
+  .label {
+    color: #FD256E;
+    font-feature-settings: "smcp" 1;
+    font-weight: 600;
+    font-size: 0.75em;
+  }
+
+  .title {
+    font-size: 1.5em;
+    font-family: 'FreightDisp Pro';
+    font-weight: 600;
+  }
+}
+
+.lego-animate.lego-animate .grid.has-rearranged {
+  > *::before {
+    opacity: 0;
+  }
+}
+
+.reveal .container {
+  border: 1px solid red;
+}
+
+.reveal .demo h4 {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.demo + .demo {
+  margin-top: 1rem;
+}
+
+.reveal .block {
+  display: block;
+  font-size: 0.5em;
+  padding: 0.5em 0.5em;
+  border: 1px solid black;
+  background-color: #eaeaea;
+}
+
+style[contenteditable] {
+  font-family: 'Hack';
+  display: block;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0.75em 1em;
+  font-size: 0.5em;
+  white-space: pre-wrap;
+  tab-size: 2;
+  background-color: #2d2d2d;
+  color: #cccccc;
+}
+
+.reveal .slides section .fragment.visible.fadeout {
+  opacity: 0;
+}
+
+.reveal .slides section .fragment.visible.current-fragment.fadeout {
+  opacity: 1;
+}
+
+// For workshop
+.reveal .timings-table.timings-table {
+  font-size: 0.65em;
+  line-height: 1.5;
+  font-family: 'Hack';
+
+  tr {
+    border-top: 0;
+  }
+
+  td {
+    border: 0;
+  }
+
+  td + td {
+    padding-left: 1.5em;
+  }
+
+  thead td {
+    font-weight: bold;
+  }
+
+  tbody > tr:nth-child(odd) {
+    background-color: #eaeaea;
+  }
+
+  tbody > tr:nth-child(even) {
+    background-color: #38eace;
+  }
+}
+
+.u-text-right {
+  text-align: right !important;
+}
