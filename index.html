@@ -29,39 +29,23 @@
 				</section>
 
 				<section>
-					<h2>Questions asked: </h2>
+					<h2>How do you write CSS that is:</h2>
 					<ul>
-						<li class="fragment">Is my CSS good enough?</li>
-						<li class="fragment">Am I doing the right things?</li>
-						<li class="fragment">Am I using the best practices?</li>
-						<li class="fragment">Is my CSS clean and maintainable?</li>
-						<li class="fragment">Is it DRY?</li>
-						<li class="fragment">Is it scalable?</li>
-						<li class="fragment">What can I improve on? <span class="fragment">And how?</span></li>
+						<li class="fragment">Clean?</li>
+						<li class="fragment">Maintainable?</li>
+						<li class="fragment">Scalable?</li>
 					</ul>
 				</section>
 
  				<section data-background="images/google2.png"></section>
 
-				<section>
-					<h2>More questions asked:</h2>
-					<ul>
-						<li class="fragment">What I framework should I use?</li>
-						<li class="fragment">Should I use frameworks?</li>
-						<li class="fragment">Should I use methods like OOCSS, BEM, SMACSS, Atomic Design?</li>
-						<li class="fragment">Which should I use?</li>
-						<li class="fragment">&hellip;</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>How do you write CSS that is:</h2>
-					<ul>
-						<li class="fragment">Maintainable?</li>
-						<li class="fragment">Scalable?</li>
-						<li class="fragment">Clean?</li>
-					</ul>
-				</section>
+ 				<section>
+ 					<h2>What should I use?</h2>
+ 					<ul>
+ 						<li class="fragment">Frameworks like Bootstrap and Foundation?</li>
+ 						<li class="fragment">Methods like OOCSS, SMACSS, Atomic design?</li>
+ 					</ul>
+ 				</section>
 			</section>
 
 			<section>
@@ -85,7 +69,7 @@
 
 			<section>
 				<section>
-					<h1>How do you write clean, scalable and maintainable CSS?</h1>
+					<h1>How do you write clean, maintainable and scalable CSS?</h1>
 				</section>
 
 				<section data-background-video="images/proportional-scaling2.mp4"> </section>
@@ -117,6 +101,14 @@
 					<h1>Proportional Scaling</h1>
 				</section>
 
+
+				<section>
+					<h2>Components scale according to:</h2>
+					<ul>
+						<li class="fragment">font-size</li>
+						<li class="fragment">viewport</li>
+					</ul>
+				</section>
 
 				<section>
 					<h2>Relative units</h2>
@@ -261,22 +253,8 @@ h2 {
 
 			<!-- Start modular components (Lego) -->
 			<section>
-				<section data-background="images/lego.jpg"></section>
-
 				<section class="u-text-center">
 					<h1>Modular Scaling <br> (Lego blocks)</h1>
-				</section>
-
-				<section>
-					<h2>Modular Scaling (Lego blocks)</h2>
-					<ul>
-						<li class="fragment">External whitespace</li>
-						<li class="fragment">Internal whitespace</li>
-					</ul>
-				</section>
-
-				<section class="u-text-center">
-					<h2>Remove external whitespace</h2>
 				</section>
 
 				<section class="u-text-center">
@@ -323,28 +301,31 @@ h2 {
 				<p class="small">From <a href="https://css-tricks.com/spacing-the-bottom-of-modules/">this article</a> on CSS-Tricks</p>
 				</section>
 
-				<section data-transition="fade" class="u-text-center">
-					<img class="no-borders" src="images/ms-no-external-spaces-alone.png" alt="">
-				</section>
-
-				<section data-transition="fade"  class="u-text-center">
-					<img class="no-borders" src="images/lego-comp-stack.jpg">
+				<section data-transition="fade">
+					<h3>Removing margins</h3>
+					<pre><code>h1, h2, h3, h4, h5, h6, ul, ol, li, blockquote {
+	margin: 0;
+	padding: 0;
+}</code></pre>
 				</section>
 
 				<section class="u-text-center">
-					<h2>Manage internal whitespace</h2>
+					<img class="no-borders" src="images/lego-comp-stack.jpg">
 				</section>
 
 				<section data-transition="fade"  class="u-text-center">
 					<img class="no-borders" src="images/lego-larger-comp.jpg">
 				</section>
 
+				<section class="u-text-center">
+					<h2>Manage internal whitespace</h2>
+				</section>
+
 				<section>
 					<div class="l-half">
 						<div>
 							<style scoped contenteditable>.reveal .block {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 	color: blue;
 }</style>
 						</div>
@@ -363,7 +344,7 @@ h2 {
 				</section>
 
 				<section>
-					<h3>Lobotomized owl selector</h3>
+					<h3>Universal selectors with adjacent sibling selector </h3>
 					<pre class="scss"><code>* + * {
   margin-top: 1em;
 }
@@ -374,20 +355,12 @@ h2 {
 					<p class="small">Read <a href="https://alistapart.com/article/axiomatic-css-and-lobotomized-owls">lobotomized owl</a> by Heydon Pickering</p>
 				</section>
 
-				<section class="u-text-center">
-					<h2>Prevent internal whitespace from scaling</h2>
-				</section>
-
 				<section>
 					<pre><code>.button {
 	margin-top: 1em;
 	margin-bottom: 1em;
 	/* Other properties */
 }</code></pre>
-				</section>
-
-				<section class="u-text-center">
-					<video controls src="images/margin-expand2.mp4"></video>
 				</section>
 
 				<section class="u-text-center">
@@ -765,6 +738,10 @@ h2 {
 
 				<section class="u-text-center" data-transition="none">
 					<img class="no-borders" src="images/specificity-components-2.jpg" alt="">
+				</section>
+
+				<section>
+					<p>The <a href="https://csswizardry.com/2014/10/the-specificity-graph/">specificity graph</a> by Harry Roberts</p>
 				</section>
 			</section>
 

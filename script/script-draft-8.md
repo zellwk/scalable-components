@@ -1,30 +1,20 @@
 ## Intro
 
-I used to think CSS is easy. All I had to do was to hack out a design and call it a day. The quality of the code that I produced didn't matter to me when I first started.
+I used to think that CSS is easy. All I had to do was hack out a design and call it a day. The quality of my code didn't matter.
 
-But somehow, somewhere along the way, it started to matter. And that is when CSS got hard. I started to ask myself the questions that you probably asked yourself; questions like:
+But somehow, it started to matter. And when it started to matter, CSS got hard. Really hard. I wanted to write code that's clean, maintainable and scalable, but I didn't know how.
 
-1. Is my CSS good enough?
-2. Am I doing the right things?
-3. Am I using the best practices?
-4. Is my CSS clean and maintainable?
-5. Is it DRY?
-6. Is it scalable?
-7. How do I improve? And what can I improve on?
+So I tried asking the only expert I know (Google).
 
-I tried to find an expert to give me answers. This was my expert (google). The good news is, I found answers. But I found too many of them, and I got confused.
+Some people said I should use frameworks like Bootstrap and Foundation while others tell me to use methods like OOCSS, BEM, Atomic Design, etc.
 
-I started to ask questions like:
+But which should I use and why? I didn't have an answer until I started looking at design and CSS at the same time. Today, I have a few thoughts that I'd like to share with you.
 
-1. What I framework should I use? Should I use Bootstrap or Foundation?
-2. Then I questioned myself regarding the use of frameworks. Why should I use them in the first place? I decided against frameworks and started my search again.
-3. This time, I found other methods, like OOCSS, BEM, Namespacing, Atomic-CSS, Atomic design, etc.
-4. Which one should I use?
-5. ...
+These methods sound good in theory, I always felt that there was something more fundamental and more encompassing that I didn't understand. So even though I used these methods, I still think my CSS can be improved.
 
-The questions go on and on, but the question remained the same. How can I keep my CSS clean, scalable, and maintainable? I have some thoughts, and I'd like to share them with you.
+It was only until I learned more about design and typography that I realized what can be improved. I want to share these thoughts with you today.
 
-But before I share my thoughts, let me tell you a bit more about myself.
+But before I share my thoughts, let me tell you a bit more about myself since my good friend here says I'm a mysterious recluse. So you probably don't know who I am.
 
 ## About me
 
@@ -34,11 +24,9 @@ When I'm not designing or coding, I teach frontend development through my blog a
 
 I produced four courses so far, one that's closely related to our topic today is Mastering Responsive Typography. The latest one I launched, just a week ago, is Learn JavaScript.
 
-!!! Add MRT and LJS !!!
-
 ## Back to the topic
 
-How do you keep your CSS clean, scalable, and maintainable? Let me share what I think needs to happen through my the design of my blog.
+How do you write CSS that's clean, maintainable and scalable? Let me share what I think needs to happen through my website.
 
 ## Blog
 
@@ -67,6 +55,8 @@ But at the same time, the components that are reused can look different too. For
 When you build your sites, you also want to think about reusing your components. They may or may not look differently when used in different places.
 
 Let's call this modular scaling.
+
+<!-- 6 min -->
 
 ## Proportional Scaling
 
@@ -105,7 +95,7 @@ When we create larger components, there's two things we want to watch out for.
 1. Components should not contain whitespace on the outside
 2. Components should manage internal whitespace
 
-### Remove External whitespace
+### Manage external whitespace
 
 Imagine putting lego blocks together. Each lego block is visible. You can put things together on top of each other without problems.
 
